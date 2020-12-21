@@ -17,7 +17,7 @@ namespace ExchangeApp.Data
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
-               .UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = SamuraiTestData");
+               .UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = TestData");
             }
         }
 
