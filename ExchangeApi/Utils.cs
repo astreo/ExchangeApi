@@ -45,6 +45,7 @@ namespace ExchangeApi
             string[] splitString = reader.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             ExchangeRate exchangeRate = new ExchangeRate
             {
+                currency = currency.ToLower(),
                 BuyVal = Convert.ToDecimal(splitString[0]),
                 SellVal = Convert.ToDecimal(splitString[1]),
                 Date = DateTime.Now

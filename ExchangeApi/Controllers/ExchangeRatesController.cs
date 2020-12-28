@@ -13,12 +13,31 @@ namespace ExchangeApi.Controllers
     [ApiController]
     public class ExchangeRatesController : ControllerBase
     {
- 
+        readonly string[] currencies = new string[] { "usd", "brl" };
+
+       
+        [HttpGet]
+        public ActionResult<IEnumerable<Transaction>> GetTransactions()
+        {
+            List<ExchangeRate> exchangeRates = new List<ExchangeRate>();
+
+            foreach (var item in currencies)
+            {
+                ExchangeRate exchangeRate = Utils.GetExchangeRate(item);
+                exchangeRates.Add(exchangeRate);
+            }
+                
+            return Ok(exchangeRates);
+        }
+        
+
+
+
         // GET api/<ExchangeRatesController>/5
         [HttpGet("{id}")]
-        public string Get(string id)
+        public string GetExchange(string id)
         {
-            if (id.ToLower() == "usd" || id.ToLower() == "brl")
+            if (currencies.Contains(id.ToLower()))
             {
                 ExchangeRate exchangeRate = Utils.GetExchangeRate(id);
                 return exchangeRate.SellVal.ToString();
@@ -27,4 +46,7 @@ namespace ExchangeApi.Controllers
         }
 
     }
+
 }
+
+    

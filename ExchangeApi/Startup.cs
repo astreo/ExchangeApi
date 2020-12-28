@@ -29,6 +29,8 @@ namespace ExchangeApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
             services.AddControllers();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -36,6 +38,9 @@ namespace ExchangeApi
                 opt.UseSqlServer(Configuration.GetConnectionString("ExchangeDBConn"))
                    .EnableSensitiveDataLogging()
                 );
+
+            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +50,11 @@ namespace ExchangeApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

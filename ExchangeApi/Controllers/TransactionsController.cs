@@ -9,6 +9,7 @@ using ExchangeApp.Data;
 using ExchangeApp.Domain;
 using AutoMapper;
 using ExchangeApi.Models;
+
 using ExchangeApi.Services;
 
 namespace ExchangeApi.Controllers
